@@ -1,16 +1,20 @@
 #include <iostream>
-#include <vector>
 
 #include "GameLogic.hpp"
 
 int main(int argc, char** argv) {
-    auto thegame = new Game::GameLogic();
+    // x / columns => argv[1]
+    // y / rows    => argv[2]
+    // num updates => argv[3]
+    if (argc < 4) {
+        std::cout << "Missing arguments, expected: .\\GameOfLife.exe X Y N" << std::endl;
+        return 0;
+    }
 
-    auto temp = new std::vector<std::vector<int>>();
-    // empty vector should cause no-op and clean return;
-    thegame->gameOfLife(*temp);
+    auto thegame = new Game::GameLogic(atoi(argv[2]), atoi(argv[1]));
 
-    for (int i = 0; i < argc; i++) {
-        std::cout << argv[i] << std::endl;
+    for (int i = 0; i < atoi(argv[3]); i++) {
+        thegame->LifeUpdate();
+        thegame->PrintBoard();
     }
 }
