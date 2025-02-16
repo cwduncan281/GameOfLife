@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "GameLogic.hpp"
 
 namespace Game {
