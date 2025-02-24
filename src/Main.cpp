@@ -1,4 +1,6 @@
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 #include "GameLogic.hpp"
 
@@ -16,5 +18,6 @@ int main(int argc, char** argv) {
     for (int i = 0; i < atoi(argv[3]); i++) {
         thegame->LifeUpdate();
         thegame->PrintBoard();
+        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
 }
